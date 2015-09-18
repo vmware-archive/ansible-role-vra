@@ -1,0 +1,22 @@
+---
+##### this is where the UI installs the ovftool this by default
+ovftool: /usr/local/bin/ovftool/ovftool
+ova_location: /var/www/downloads
+ova_file: vRA.ova
+varoot_password: VMware1!
+vRA_vm_name: vRA
+vRA_poweron: ON
+vcenter_host: vc-01a.corp.local
+vra_hostname: vra-01a
+#vcenter_host: 192.168.110.2
+vcenter_user: CORP\Administrator
+vcenter_password: VMware1!
+vcenter_port: '443'
+vRA_datacenter: VIO Datacenter
+vRA_cluster: Management Cluster
+vRA_datastore: ds-site-a-nfs-01
+vRA_mgmt_grp: VIO Management
+
+
+
+

@@ -1,0 +1,29 @@
+---
+- name: Deploy vRA OVA
+  shell: >
+    {{ ovftool }}
+    '--name={{ vRA_vm_name }}'
+    --acceptAllEulas
+    --allowExtraConfig
+    '--network={{ vRA_mgmt_grp }}'
+    --noSSLVerify
+    --prop:varoot-password={{ varoot_password }}
+    --prop:vami.hostname={{ vra_hostname }}
+    --diskMode=thin
+    '--datastore={{ vRA_datastore }}'
+    --ipProtocol=IPv4
+    '{{ ova_location }}/{{ ova_file }}'
+    'vi://{{ vcenter_user | urlencode }}:{{ vcenter_password | urlencode }}@{{ vcenter_host }}/{{ vRA_datacenter }}/host/{{ vRA_cluster }}/'
+  register: vRA_ova_deploy
+
+- name: debug deploy
+  debug: var=vRA_ova_deploy
+
+- name: Start vRA
+  vsphere_guest:
+    vcenter_hostname: "{{ vcenter_host }}"
+    username: "{{ vcenter_user }}"
+    password: "{{ vcenter_password }}"
+    guest: "{{ vRA_vm_name }}"
+    state: powered_on
+  when: vRA_poweron == "ON"
