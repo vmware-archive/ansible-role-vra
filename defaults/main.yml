@@ -1,22 +1,43 @@
----
+#
+#  Copyright 2015 VMware, Inc.
+#
+#  Licensed under the Apache License, Version 2.0 (the "License");
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+#
+datacenter_name: "VIO Datacenter"
+vcenter_host: "192.168.110.20"
+vcenter_password: "VMware1!"
+vcenter_port: '443'
+vcenter_user: "root"
+vra_cluster: "Management Cluster"
+vra_datastore: "ds-site-a-nfs-01"
+vra_delete: 'True'
+vra_host_name: "srinivra"
+vra_instance: "vra09.corp.local"
+vra_name: "vra"
+vra_network: "VIO Management"
+vra_ova: "VMware-vCAC-Appliance-6.2.2.0-2754336_OVF10.ova"
+vra_ova_location: "/var/www/html/downloads"
+vra_port: '5480'
+vra_root_password: "VMware1!"
+vra_ssh_enabled: 'True'
+vra_user: "root"
+vra_postgres_host: "192.168.100.137"
+vra_postgres_port: "5432"
+vra_postgres_database: "vcac"
+vra_postgres_user: "vcac"
+vra_postgres_password: "vcac"
+
+vra_ova_location: "/var/www/html/downloads"
+
 ##### this is where the UI installs the ovftool this by default
 ovftool: /usr/local/bin/ovftool/ovftool
-ova_location: /var/www/downloads
-ova_file: vRA.ova
-varoot_password: VMware1!
-vRA_vm_name: vRA
-vRA_poweron: ON
-vcenter_host: vc-01a.corp.local
-vra_hostname: vra-01a
-#vcenter_host: 192.168.110.2
-vcenter_user: CORP\Administrator
-vcenter_password: VMware1!
-vcenter_port: '443'
-vRA_datacenter: VIO Datacenter
-vRA_cluster: Management Cluster
-vRA_datastore: ds-site-a-nfs-01
-vRA_mgmt_grp: VIO Management
-
-
-
-
