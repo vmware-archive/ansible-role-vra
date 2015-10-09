@@ -14,8 +14,16 @@
 #  limitations under the License.
 #
 ---
-- name: deploy VRA Business  OVA
+- name: deploy VRA OVA
   include: vraova_deploy.yml tags=vra_deploy
-- name:  Configure VRA Business  OVA
+- name: Power VRA
+  include: vra_poweron.yml tags=vra_poweron
+- name: Delete VRA
+  include: vra_delete.yml tags=vra_delete
+- name:  Configure Postgres
   include: vra_postgresdb_configure.yml tags=vra_configure_postgresdb
+- name:  Configure Messaging
+  include: vra_messaging_configure.yml tags=vra_configure_messaging
+- name:  Configure Clustering
+  include: vra_cluster_configure.yml tags=vra_configure_cluster
 

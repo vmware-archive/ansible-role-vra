@@ -41,12 +41,8 @@
     guest: "{{ vra_name }}"
     state: absent
     force: yes
-  tags:
-    - cleanup_combined
-    - cleanup_psc
-    - cleanup_vcsa
   register: vra_deleted
-  when: vra_exists.changed is defined and "{{vra_delete}}"== "True"
+  when: vra_exists.changed is defined and "{{vra_delete}}"== "1"
 
 - name: debug delete instance
   debug: var=vra_deleted
@@ -55,6 +51,7 @@
   ignore_errors: yes
   local_action:
     module: ova_deploy
+    power_on: "{{vra_poweron}}"
     vcenter_props:
       vcenter_host: "{{ vcenter_host}}"
       vcenter_port: "{{ vcenter_port }}"
@@ -77,7 +74,6 @@
       va-ssh-enabled: "{{vra_ssh_enabled}}"
       vami.hostname: "{{vra_host_name}}"
     option_props:
-      - powerOn
       - acceptAllEulas
       - allowExtraConfig
       - noSSLVerify

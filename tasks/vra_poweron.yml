@@ -14,17 +14,11 @@
 #  limitations under the License.
 #
 ---
-- name: Configure Postgres DB
-  ignore_errors: yes
-  vra_configure:
-    vra_instance: "{{vra_instance}}"
-    vra_user: "{{vra_user}}"
-    vra_port: "{{vra_port}}"
-    vra_root_password: "{{vra_root_password}}"
-    vra_postgres_db:
-      host: "{{vra_postgres_host}}"
-      port: "{{vra_postgres_port}}"
-      database: "{{vra_postgres_database}}"
-      user: "{{vra_postgres_user}}"
-      password: "{{vra_postgres_password}}"
-  register: vra_connnected
+- name: Start vra
+  vsphere_guest:
+    vcenter_hostname: "{{ vcenter_host }}"
+    username: "{{ vcenter_user }}"
+    password: "{{ vcenter_password }}"
+    guest: "{{ vra_name }}"
+    state: powered_on
+  register: vra_deleted

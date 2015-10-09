@@ -14,17 +14,16 @@
 #  limitations under the License.
 #
 ---
-- name: Configure Postgres DB
+- name: Configure Messaging
   ignore_errors: yes
   vra_configure:
     vra_instance: "{{vra_instance}}"
     vra_user: "{{vra_user}}"
     vra_port: "{{vra_port}}"
     vra_root_password: "{{vra_root_password}}"
-    vra_postgres_db:
-      host: "{{vra_postgres_host}}"
-      port: "{{vra_postgres_port}}"
-      database: "{{vra_postgres_database}}"
-      user: "{{vra_postgres_user}}"
-      password: "{{vra_postgres_password}}"
+    vra_messaging:
+      host: "{{vra_messaging_host}}"
+      port: "{{vra_messaging_port}}"
+      user: "{{vra_messaging_user}}"
+      password: "{{vra_messaging_password}}"
   register: vra_connnected

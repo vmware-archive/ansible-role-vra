@@ -36,8 +36,8 @@ vra_postgres_port: "5432"
 vra_postgres_database: "vcac"
 vra_postgres_user: "vcac"
 vra_postgres_password: "vcac"
+vra_poweron: "1"
 
-vra_ova_location: "/var/www/html/downloads"
 
 ##### this is where the UI installs the ovftool this by default
 ovftool: /usr/local/bin/ovftool/ovftool
