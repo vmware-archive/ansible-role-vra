@@ -1,0 +1,10 @@
+---
+- name: Configure vRA Appliance
+  ignore_errors: yes
+  configure_vra_appliance_mod:
+    vra_host_name: "{{ vra_host_name }}"
+    vra_root_password: "{{ vra_root_password }}"
+  register: vra_appliance_config_mod
+
+- name: debug config
+  debug: var=vra_appliance_config_mod
