@@ -1,10 +1,37 @@
+#
+#  Copyright 2015 VMware, Inc.
+#
+#  Licensed under the Apache License, Version 2.0 (the "License");
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+#
 ---
 - name: Configure vRA Appliance
   ignore_errors: yes
   configure_vra_appliance_mod:
     vra_host_name: "{{ vra_host_name }}"
     vra_root_password: "{{ vra_root_password }}"
+    vra_port: "{{ vra_port }}"
+    vra_sso_host: "{{ vra_sso_host }}"
+    vra_sso_user: "{{ vra_sso_user }}"
+    vra_sso_password: "{{ vra_sso_password }}"
+    vra_sso_port: "{{ vra_sso_port }}"
+    vra_license_key: "{{ vra_license_key }}"
+    vra_ntp_server: "{{ vra_ntp_server }}"
+    vra_ssl_org: "{{ vra_ssl_org }}"
+    vra_ssl_org_unit: "{{ vra_ssl_org_unit }}"
+    vra_ssl_country: "{{ vra_ssl_country }}"
   register: vra_appliance_config_mod
 
-- name: debug config
+- name: debug config std out
   debug: var=vra_appliance_config_mod
+
+

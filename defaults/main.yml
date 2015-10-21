@@ -34,9 +34,9 @@ vra_network: "VIO Management"
 
 
 ####These should come from UI###
-vra_name: vra1
-vra_host_name: vra-01a.corp.local
-vra_instance: "vra-01a.corp.local"
+vra_name: vra7
+vra_host_name: vra-07a.corp.local
+vra_instance: "vra-07a.corp.local"
 vra_user: "root"
 vra_root_password: VMware1!
 vra_port: '5480'
@@ -45,6 +45,23 @@ vra_ssh_enabled: 'True'
 
 ## vra_delete is to indicate that we should delete the appliance if it exists (while deploying)
 vra_delete: '1'
+
+## vra ssl setting
+vra_ssl_org: "VMware Incorporated"
+vra_ssl_org_unit: "PSO"
+vra_ssl_country: "US"
+
+#vra so settings
+vra_sso_host: "vc-01a.corp.local"
+vra_sso_port: "443"
+vra_sso_user: "administrator@vsphere.local"
+vra_sso_password: "VMware1!"
+
+## vra license key settings
+vra_license_key: "W10CA-00351-L8R8R-017RM-CEX6Y"
+
+## vra ntp setting
+vra_ntp_server: "192.168.110.10"
 
 ### vra postgres db setings
 vra_postgres_host: "192.168.100.137"
