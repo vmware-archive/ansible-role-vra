@@ -18,10 +18,10 @@
   ignore_errors: yes
   local_action:
     module: vcenter_query
-    host: "{{ vcenter_host }}"
-    login: "{{ vcenter_user }}"
-    password: "{{ vcenter_password }}"
-    port: "{{ vcenter_port }}"
+    host: "{{ mgmt_vc }}"
+    login: "{{ mgmt_vc_username }}"
+    password: "{{ mgmt_vc_password }}"
+    port: "{{ mgmt_vc_port }}"
     resourcename: "{{ vra_name }}"
     resourcevarname: "{{vra_name }}"
     resourcetype: 'vm'
@@ -35,9 +35,9 @@
 - name: Destroying existing appliance
   ignore_errors: True
   vsphere_guest:
-    vcenter_hostname: "{{ vcenter_host }}"
-    username: "{{ vcenter_user }}"
-    password: "{{ vcenter_password }}"
+    vcenter_hostname: "{{ mgmt_vc }}"
+    username: "{{ mgmt_vc_username }}"
+    password: "{{ mgmt_vc_password }}"
     guest: "{{ vra_name }}"
     state: absent
     force: yes
@@ -53,15 +53,15 @@
     module: ova_deploy
     power_on: "{{vra_poweron}}"
     vcenter_props:
-      vcenter_host: "{{ vcenter_host}}"
-      vcenter_port: "{{ vcenter_port }}"
-      vcenter_user: "{{ vcenter_user|urlencode }}"
-      vcenter_password: "{{ vcenter_password|urlencode }}"
+      vcenter_host: "{{ mgmt_vc }}"
+      vcenter_port: "{{ mgmt_vc_port }}"
+      vcenter_user: "{{ mgmt_vc_username|urlencode }}"
+      vcenter_password: "{{ mgmt_vc_password|urlencode }}"
     location_props:
       resource_name: "{{ vra_name }}"
-      datacenter: "{{ datacenter_name }}"
+      datacenter: "{{ mgmt_vc_datacenter }}"
       network: "{{ vra_network }}"
-      cluster: "{{ vra_cluster }}"
+      cluster: "{{ mgmt_vc_cluster }}"
       data_store: "{{ vra_datastore }}"
     ova_props:
       ova_directory: "{{ vra_ova_location }}"
@@ -84,10 +84,10 @@
   ignore_errors: yes
   local_action:
     module: vcenter_query
-    host: "{{ vcenter_host }}"
-    login: "{{ vcenter_user }}"
-    password: "{{ vcenter_password }}"
-    port: "{{ vcenter_port }}"
+    host: "{{ mgmt_vc }}"
+    login: "{{ mgmt_vc_username }}"
+    password: "{{ mgmt_vc_password }}"
+    port: "{{ mgmt_vc_port }}"
     resourcename: "{{ vra_name }}"
     resourcevarname: "{{vra_name }}"
     resourcetype: 'vm'

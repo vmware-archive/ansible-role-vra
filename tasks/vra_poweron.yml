@@ -16,9 +16,9 @@
 ---
 - name: Start vra
   vsphere_guest:
-    vcenter_hostname: "{{ vcenter_host }}"
-    username: "{{ vcenter_user }}"
-    password: "{{ vcenter_password }}"
+    vcenter_hostname: "{{ mgmt_vc }}"
+    username: "{{ mgmt_vc_username }}"
+    password: "{{ mgmt_vc_password }}"
     guest: "{{ vra_name }}"
     state: powered_on
   register: vra_deleted
