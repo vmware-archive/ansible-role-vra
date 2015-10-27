@@ -28,4 +28,6 @@
   include: vra_messaging_configure.yml tags=vra_configure_messaging
 - name:  Configure Clustering
   include: vra_cluster_configure.yml tags=vra_configure_cluster
+- name: Run VRA Windows script
+  include: vra_win_script.yml tags=vra_win_run_script
 
