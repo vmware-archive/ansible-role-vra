@@ -22,6 +22,8 @@
   include: vra_delete.yml tags=vra_delete
 - name:  Configure VRA Settings
   include: vra_appliance_configure.yml tags=vra_configure_settings
+- name:  Configure VRA SSO
+  include: vra_sso_configure.yml tags=vra_configure_sso
 - name:  Configure Postgres
   include: vra_postgresdb_configure.yml tags=vra_configure_postgresdb
 - name:  Configure Messaging
