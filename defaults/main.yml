@@ -70,4 +70,6 @@ vra_postgres_database: "vcac"
 vra_postgres_user: "vcac"
 vra_postgres_password: "vcac"
 
+#Directory where temporary vRA windows script will be generated
+script_dir: '/tmp'
 

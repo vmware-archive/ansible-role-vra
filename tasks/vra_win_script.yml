@@ -1,0 +1,33 @@
+#
+#  Copyright 2015 VMware, Inc.
+#
+#  Licensed under the Apache License, Version 2.0 (the "License");
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+#
+---
+- name: Create powershell script for windows vRA automation
+  local_action: template dest="{{ script_dir }}" src="../templates/windows/vRA62Automation_v1.ps1"
+
+- name: Run vRA script
+  script: "{{ script_dir }}/vRA62Automation_v1.ps1"
+  register: s_test
+
+- name: Check for Errors
+  debug: var=s_test.stderr
+
+- name: Check Script Output
+  debug: var=s_test.stdout_lines
+
+- name: clean up local copy of vRA script
+  local_action: file path="{{ script_dir }}/vRA62Automation_v1.ps1" state=absent
+  tags: mkdir
+
