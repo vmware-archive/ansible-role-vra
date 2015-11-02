@@ -14,20 +14,27 @@
 #  limitations under the License.
 #
 ---
+- name: Get vCAC-Server-Setup.exe form vRA linux host
+  fetch: src=/opt/vmware/share/htdocs/service/iaas/download/vCAC-Server-Setup.exe dest="{{ script_dir }}" validate_checksum=no flat=yes
+
+- name: Get vCAC-Wapi-Setup.exe form vRA linux host
+  fetch: src=/opt/vmware/share/htdocs/service/iaas/download/vCAC-Wapi-Setup.exe dest="{{ script_dir }}" validate_checksum=no flat=yes
+
+- name: Get VrmAgentInstaller.msi form vRA linux host
+  fetch: src=/opt/vmware/share/htdocs/service/iaas/download/VrmAgentInstaller.msi dest="{{ script_dir }}" validate_checksum=no flat=yes
+
+- name: Get WorkflowManagerInstaller.msi form vRA linux host
+  fetch: src=/opt/vmware/share/htdocs/service/iaas/download/WorkflowManagerInstaller.msi dest="{{ script_dir }}" validate_checksum=no flat=yes
+
 - name: Create powershell script for windows vRA automation
-  local_action: template dest="{{ script_dir }}" src="../templates/windows/vRA62Automation_v1.ps1"
+  local_action: template dest="{{ script_dir }}" src="../templates/windows/vCAC-ServerConfig.xml"
 
-- name: Run vRA script
-  script: "{{ script_dir }}/vRA62Automation_v1.ps1"
-  register: s_test
+- name: Create powershell script for windows vRA automation
+  local_action: template dest="{{ script_dir }}" src="../templates/windows/WAPI-ConfigTool.xml"
 
-- name: Check for Errors
-  debug: var=s_test.stderr
+- name: Create powershell script for windows vRA automation
+  local_action: template dest="{{ script_dir }}" src="../templates/windows/InstallScript.bat"
 
-- name: Check Script Output
-  debug: var=s_test.stdout_lines
-
-- name: clean up local copy of vRA script
-  local_action: file path="{{ script_dir }}/vRA62Automation_v1.ps1" state=absent
-  tags: mkdir
+- name: Create powershell script for windows vRA automation
+  local_action: template dest="{{ script_dir }}" src="../templates/windows/SQLConfiguration.ini" 
 
