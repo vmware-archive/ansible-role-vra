@@ -25,7 +25,6 @@
     resourcename: "{{ vra_name }}"
     resourcevarname: "{{vra_name }}"
     resourcetype: 'vm'
-    getfacts: 'yes'
   register: vra_exists
 
 - name: debug checking vra Instance if exists
@@ -73,6 +72,10 @@
       varoot-password: "{{vra_root_password}}"
       va-ssh-enabled: "{{vra_ssh_enabled}}"
       vami.hostname: "{{vra_host_name}}"
+      vami.gateway.VMware_vRealize_Appliance: "{{vra_gateway}}"
+      vami.dns.VMware_vRealize_Appliance:  "{{vra_dns}}"
+      vami.ip0.VMware_vRealize_Appliance:  "{{vra_ip}}"
+      vami.netmask0.VMware_vRealize_Appliance: "{{vra_netmask}}"
     option_props:
       - acceptAllEulas
       - allowExtraConfig
@@ -91,7 +94,6 @@
     resourcename: "{{ vra_name }}"
     resourcevarname: "{{vra_name }}"
     resourcetype: 'vm'
-    getfacts: 'yes'
   register: vra_created
   when: not vra_exists.changed is defined or vra_deleted.changed
 
