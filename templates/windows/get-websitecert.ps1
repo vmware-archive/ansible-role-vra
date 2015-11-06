@@ -18,7 +18,7 @@ $vcacapfqdn = $args[0]
 
 function Get-WebsiteCertificate {
 	#By: Andy Arismendi
-	#https://urldefense.proofpoint.com/v2/url?u=http-3A__poshcode.org_2521&d=BQIGaQ&c=Sqcl0Ez6M0X8aeM67LKIiDJAXVeAw-YihVMNtXt-uEs&r=1gW0eSzUkGyPGxwfY0M5tzrfhqy9tCC4aVM-oIG6Fas&m=6UvB-xDibQ9vD_dAvZDJ8azCxh9XjfKun7y1is8vq5E&s=u7f65x29zKVadXiINxZ6HiK7AVUHEuC3kkDmGhbJ6Ls&e=
+	#http://poshcode.org/2521
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory = $true)] [System.Uri]
@@ -113,7 +113,7 @@ function Get-WebsiteCertificate {
 			Ignore certificate errors for certificates that are expired, have a mismatched common name or are self signed.
 		.EXAMPLE
 
-			PS C:\> Get-WebsiteCertificate "https://urldefense.proofpoint.com/v2/url?u=https-3A__www.gmail.com&d=BQIGaQ&c=Sqcl0Ez6M0X8aeM67LKIiDJAXVeAw-YihVMNtXt-uEs&r=1gW0eSzUkGyPGxwfY0M5tzrfhqy9tCC4aVM-oIG6Fas&m=6UvB-xDibQ9vD_dAvZDJ8azCxh9XjfKun7y1is8vq5E&s=tHT6BI9RYEYW65NbSjW2raEHvkVc9E4WjLNSQxJGJPw&e= " -UseSystemProxy -UseDefaultCredentials -TrustAllCertificates -OutputFile C:\gmail.cer
+			PS C:\> Get-WebsiteCertificate "https://www.gmail.com" -UseSystemProxy UseDefaultCredentials -TrustAllCertificates -OutputFile C:\gmail.cer
 
 		.INPUTS
 			Does not accept pipeline input.
@@ -123,5 +123,5 @@ function Get-WebsiteCertificate {
 }
 
 ###Install Cert###
-
-Get-WebsiteCertificate "https://urldefense.proofpoint.com/v2/url?u=https-3A__-24vCACAPFQDN&d=BQIGaQ&c=Sqcl0Ez6M0X8aeM67LKIiDJAXVeAw-YihVMNtXt-uEs&r=1gW0eSzUkGyPGxwfY0M5tzrfhqy9tCC4aVM-oIG6Fas&m=6UvB-xDibQ9vD_dAvZDJ8azCxh9XjfKun7y1is8vq5E&s=-CzlIfC9b9xuYHHT72GfQ3j6rZDiT7mnaKGTT6vDDUs&e= " -TrustAllCertificates -outputfile "C:\Temp\AP.cer"
+$apurl = "https://" + $vcacapfqdn + ":5480"
+Get-WebsiteCertificate $apurl -TrustAllCertificates -outputfile "C:\Temp\AP.cer"

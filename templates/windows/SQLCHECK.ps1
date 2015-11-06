@@ -22,14 +22,14 @@
 $VMname = $args[0]
 $vCACAPFQDN = $args[1]
 # Start SQL Installation and Configuration in new PS Window
-$chksql = Get-Service "MSSQL*SQLEXPRESS"
-write-host "`$vmname = $vmname"
-while ($chksql.status -ne 'Running')
-{
-	$chksql = Get-Service "MSSQL*SQLEXPRESS"
-	Write-Host "Waiting for SQLEXPRESS Service to be installed" -ForegroundColor Yellow
-	Start-Sleep -Seconds 15
-}
+#$chksql = Get-Service "MSSQL*SQLEXPRESS"
+#write-host "`$vmname = $vmname"
+#while ($chksql.status -ne 'Running')
+#{
+#	$chksql = Get-Service "MSSQL*SQLEXPRESS"
+#	Write-Host "Waiting for SQLEXPRESS Service to be installed" -ForegroundColor Yellow
+#	Start-Sleep -Seconds 15
+#}
 Write-Host "SQL Server Service Installed and Running. Proceeding..."
 $Verbosepreference = "Continue"
 $service = @("MSSQL*SQLEXPRESS")

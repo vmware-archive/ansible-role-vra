@@ -36,7 +36,13 @@
 # ----------------------------------------
 #   USER CONFIGURATION - EDIT AS NEEDED
 # ----------------------------------------
-$account = $args[0]
+$account = {{ win_vra_vcaciaasvm }}
+
+$fullaccount = $account + "\Administrator"
+
+Import-Module PSLogging
+$logFile = Add-LogFile -Path "C:\Temp\prereq.log"
+
 # Set IIS default locations to be used with IIS role
 $InetPubRoot = "C:\Inetpub"
 $InetPubLog = "C:\Inetpub\Log"
@@ -65,7 +71,7 @@ $NTRightsmenuoption = "2"
 $NTRightsInstallSource = ""
 #Account to use for Batch Logon and Secondary Logon Services (if left blank will default to local administrators group)
 # Example Corp\vcacservice or Eng\Smithj
-$domainAdminAcct = "$account"
+$domainAdminAcct = "$fullaccount"
 
 # -------------- Java 1.7 ----------------
 # Specify what the installer will do if Java is not 1.7
@@ -520,6 +526,8 @@ $JavaVersionBuild = $JavaVersions[2]
 Write-Host ""
 Write-Host "Pre-Req settings have been completed." -foregroundcolor Green
 Write-Host "Please run the prerequisite checker and verify. Proceed with SQL pre-reqs" -ForegroundColor Green
+
+$logFile | Disable-LogFile
 
 # ----------------------------------------
 #            END OF SCRIPT

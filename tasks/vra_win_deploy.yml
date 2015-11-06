@@ -15,42 +15,52 @@
 #
 ---
 - name: Create tmp directory
-  win_file: path=C:\temp state=present state=directory
+  win_file: path=C:\temp state=directory
 
-- name: Get SQL Express 2008r2 SP2
-  get_url: url=http://download.microsoft.com/download/0/4/B/04BE03CD-EAF3-4797-9D8D-2E08E316C998/SQLEXPR_x64_ENU.exe dest=C:/temp/SQLEXPR_x64_ENU.exe
+#- name: Get SQL Express 2008r2 SP2
+#  win_get_url: 
+#    url: 'http://download.microsoft.com/download/0/4/B/04BE03CD-EAF3-4797-9D8D-2E08E316C998/SQLEXPR_x64_ENU.exe'
+#    dest: 'C:\temp\SQLEXPR_x64_ENU.exe'
+#    force: no
+#  win_get_url: url=https://download.microsoft.com/download/D/7/A/D7A28B6C-FCFE-4F70-A902-B109388E01E9/ENU/SQLServer2008R2SP3-KB2979597-x86-ENU.exe  dest=C:\temp\SQLEXPR_x64_ENU.exe
 
-- name: Upload SQL Configuration
-  win_copy: src={{ script_dir }} dest=C:/temp/
+#- name: Upload SQL Configuration
+#  win_copy: src={{ script_dir }}/SQLConfiguration.ini dest=C:\temp\SQLConfiguration.ini
+
+- name: Upload vCAC-ServerConfig.xml
+  win_copy: src={{ script_dir }}/vCAC-ServerConfig.xml dest=C:\temp\vCAC-ServerConfig.xml
+
+- name: Upload WAPI-ConfigTool.xml
+  win_copy: src={{ script_dir }}/WAPI-ConfigTool.xml dest=C:\temp\WAPI-ConfigTool.xml
+
+- name: Upload AutomationScript62.ps1
+  win_copy: src={{ script_dir }}/AutomationScript62.ps1 dest=C:\temp\AutomationScript62.ps1
+
+- name: Get installers directly from the vCAC Appliance to vRA IaaS
+  script: "../templates/windows/GetInstallers.ps1 {{ win_vra_vcacapgp }} {{ win_vra_vcacapvm }}.{{ win_vra_dns_sufix }}"
 
 - name: Set execution policy
-  script: 'Powershell -command `"& {Set-ExecutionPolicy bypass}`"' -scripttype bat
+  raw: Powershell.exe Set-ExecutionPolicy bypass
 
 - name: Run prerequisites automation script
-  script: "{{ script_dir }}/AutomationScript62.ps1" {{ win_vra_vcaciaasvm }}\Adminsitrator
+  raw: Powershell.exe C:\temp\AutomationScript62.ps1
 
-- name: Configure SQL
-  script: 'c:\temp\SQLEXPR_x64_ENU.exe /iacceptSQLServerLicenseTerms /configurationfile=`"c:\temp\SQLConfiguration.ini`"' -wait -scripttype bat
+#- name: Install SQL
+#  raw: c:\temp\SQLEXPR_x64_ENU.exe -verb RunAs /iacceptSQLServerLicenseTerms /configurationfile="c:\temp\SQLConfiguration.ini"
+#  ignore_errors: yes
 
-- name: Install SQL
-  script: "{{ script_dir }}/StartSQL.ps1" -verb RunAs -scripttype bat
-
-- name: Run vRA script
-  script: "{{ script_dir }}/vRA62Automation_v1.ps1"
-  register: s_test
-
+- name: Pause for 60 seconds
+  pause: seconds=60
+   
 - name: Checking for SQL Services
-  script: "{{ script_dir }}/SQLCHECK.ps1" "{{ win_vra_vcaciaasvm }}"
+  script: "../templates/windows/SQLCHECK.ps1 {{ win_vra_vcaciaasvm }}"
 
 - name: Setting and restarting services
-  script: "set-service -name SQLBrowser -startuptype Automatic; net start SQLBrowser; restart-Service 'MSSQL*SQLEXPRESS' -Force;restart-Service 'SQLWRITER' -Force"
-
-- name: Adding License key
-  script: "/usr/sbin/vcac-config -v license-update --key {{ win_vra_lickey }}"
+  raw: Powershell.exe set-service -name SQLBrowser -startuptype Automatic; net start SQLBrowser; restart-Service 'MSSQL*SQLEXPRESS' -Force;restart-Service 'SQLWRITER' -Force
 
 - name: Getting vCAC Appliance Cert for IAAS
-  script: "{{ scritp_dir }}/get-websitecert.ps1" "{{ win_vra_vcacapvm }}.{{ win_vra_dns_sufix }}"
+  script: "../templates/windows/get-websitecert.ps1 {{ win_vra_vcacapvm }}.{{ win_vra_dns_sufix }}"
 
 - name: Running vCAC Installation
-  script: "{{ script_dir }}/InstallScript.bat" -scripttype bat
+  script: "../templates/windows/InstallScript.bat"
 

@@ -52,9 +52,9 @@ msiexec.exe /i "c:\temp\VrmAgentInstaller.msi" /qn /norestart /Lvoicewarmup! "c:
 time /t
 echo.
 
-echo Register Catalog Types ...
-"C:\Program Files (x86)\VMware\vCAC\Server\Model Manager Data\Cafe\Vcac-Config.exe" RegisterCatalogTypes -v
-time /t
+echo Register Catalog Types ... simply echoing for now
+echo "C:\Program Files (x86)\VMware\vCAC\Server\Model Manager Data\Cafe\Vcac-Config.exe" RegisterCatalogTypes -v
+echo time /t
 echo.
 
 echo End Time:

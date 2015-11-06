@@ -17,16 +17,16 @@
     <SUPPRESS_CERTIFICATE_MISMATCH_FLAG>True</SUPPRESS_CERTIFICATE_MISMATCH_FLAG>
 
     <!-- Service user in domain\user format.  This service user is used to run wapi portal -->
-    <SERVICE_USER>$"{{ win_vra_vcaciaasvm }}\Administrator"</SERVICE_USER>
+    <SERVICE_USER>{{ win_vra_vcaciaasvm }}\Administrator</SERVICE_USER>
 
     <!-- Service user password -->
-    <SERVICE_USER_PASSWORD>"{{ win_vra_service_user_password }}"</SERVICE_USER_PASSWORD>
+    <SERVICE_USER_PASSWORD>{{ win_vra_service_user_password }}</SERVICE_USER_PASSWORD>
 
     <!-- Model manager web hostname (FQDN) -->
-    <MODEL_MANAGER_WEB_HOSTNAME>"{{ win_vra_vcaciaasvm }}"</MODEL_MANAGER_WEB_HOSTNAME>
+    <MODEL_MANAGER_WEB_HOSTNAME>{{ win_vra_vcaciaasvm }}</MODEL_MANAGER_WEB_HOSTNAME>
 
     <!-- Load balancer for IAAS Web -->
-    <IAAS_SERVER_LOCALIP>"{{ win_vra_vcaciaasvm }}"</IAAS_SERVER_LOCALIP>
+    <IAAS_SERVER_LOCALIP>{{ win_vra_vcaciaasvm }}</IAAS_SERVER_LOCALIP>
 
   </website>
 </vCACProperties>

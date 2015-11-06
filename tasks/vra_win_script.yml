@@ -26,15 +26,21 @@
 - name: Get WorkflowManagerInstaller.msi form vRA linux host
   fetch: src=/opt/vmware/share/htdocs/service/iaas/download/WorkflowManagerInstaller.msi dest="{{ script_dir }}" validate_checksum=no flat=yes
 
-- name: Create powershell script for windows vRA automation
+- name: Create vCAC-ServerConfig.xml for windows vRA automation
   local_action: template dest="{{ script_dir }}" src="../templates/windows/vCAC-ServerConfig.xml"
 
-- name: Create powershell script for windows vRA automation
+- name: Create WAPI-ConfigTool.xml for windows vRA automation
   local_action: template dest="{{ script_dir }}" src="../templates/windows/WAPI-ConfigTool.xml"
 
-- name: Create powershell script for windows vRA automation
+- name: Create InstallScript.bat for windows vRA automation
   local_action: template dest="{{ script_dir }}" src="../templates/windows/InstallScript.bat"
 
-- name: Create powershell script for windows vRA automation
-  local_action: template dest="{{ script_dir }}" src="../templates/windows/SQLConfiguration.ini" 
+#- name: Create SQLConfiguration.ini for windows vRA automation
+#  local_action: template dest="{{ script_dir }}" src="../templates/windows/SQLConfiguration.ini" 
+
+- name: Create AutomationScript62.ps1 powershell script for windows vRA automation
+  local_action: template dest="{{ script_dir }}" src="../templates/windows/AutomationScript62.ps1" 
+
+- name: Adding License key
+  raw: /usr/sbin/vcac-config -v license-update --key {{ win_vra_lickey }}
 

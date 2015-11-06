@@ -3,29 +3,29 @@
   <componentRegistry>
     <TENANT>vsphere.local</TENANT>
     <COMPONENT_REGISTRY_CERTIFICATE_THUMBPRINT></COMPONENT_REGISTRY_CERTIFICATE_THUMBPRINT>
-    <SSO_ADMIN_PASSWORD>"{{ win_vra_sso_password }}"</SSO_ADMIN_PASSWORD>
-    <SSO_ADMIN_USERNAME>"{{ win_vra_sso_username }}"</SSO_ADMIN_USERNAME>
-    <COMPONENT_REGISTRY_SERVER>"{{ win_vra_vcacapvm }}"."{{ win_vra_dns_sufix }}"</COMPONENT_REGISTRY_SERVER>
-    <IAAS_SERVER_LOCALIP>"{{ win_vra_vcaciaasvm }}"</IAAS_SERVER_LOCALIP>
+    <SSO_ADMIN_PASSWORD>{{ win_vra_sso_password }}</SSO_ADMIN_PASSWORD>
+    <SSO_ADMIN_USERNAME>{{ win_vra_sso_username }}</SSO_ADMIN_USERNAME>
+    <COMPONENT_REGISTRY_SERVER>{{ win_vra_vcacapvm }}.{{ win_vra_dns_sufix }}</COMPONENT_REGISTRY_SERVER>
+    <IAAS_SERVER_LOCALIP>{{ win_vra_vcaciaasvm }}</IAAS_SERVER_LOCALIP>
   </componentRegistry>
   <common>
-    <DATABASE_INSTANCE>"{{ win_vra_vcaciaasvm }}\SQLEXPRESS"</DATABASE_INSTANCE>
+    <DATABASE_INSTANCE>{{ win_vra_vcaciaasvm }}\SQLEXPRESS</DATABASE_INSTANCE>
     <DATABASE_NAME>vcac</DATABASE_NAME>
     <DATA_PROTECTED>FALSE</DATA_PROTECTED>
     <INSTALL_MODE>UIInstall</INSTALL_MODE>
   </common>
   <webServiceCommon>
-    <SECURITY_PASSPHRASE>"{{ win_vra_security_password }}"</SECURITY_PASSPHRASE>
+    <SECURITY_PASSPHRASE>{{ win_vra_security_password }}</SECURITY_PASSPHRASE>
     <WEBSITE_NAME>Default Web Site</WEBSITE_NAME>
     <CERTIFICATE></CERTIFICATE>
     <SUPPRESS_CERTIFICATE_MISMATCH_FLAG>True</SUPPRESS_CERTIFICATE_MISMATCH_FLAG>
     <HTTPS_PORT>443</HTTPS_PORT>
-    <SERVICE_USER>"{{ win_vra_vcaciaasvm }}\Administrator"</SERVICE_USER>
-    <SERVICE_USER_PASSWORD>"{{ win_vra_service_user_password }}"</SERVICE_USER_PASSWORD>
-    <MODEL_MANAGER_WEB_HOSTNAME>"{{ win_vra_vcaciaasvm }}"</MODEL_MANAGER_WEB_HOSTNAME>
+    <SERVICE_USER>{{ win_vra_vcaciaasvm }}\Administrator</SERVICE_USER>
+    <SERVICE_USER_PASSWORD>{{ win_vra_service_user_password }}</SERVICE_USER_PASSWORD>
+    <MODEL_MANAGER_WEB_HOSTNAME>{{ win_vra_vcaciaasvm }}</MODEL_MANAGER_WEB_HOSTNAME>
     <CREATE_MSSQL_AZMAN_STORE_FLAG>false</CREATE_MSSQL_AZMAN_STORE_FLAG>
     <AZMAN_STORE_TYPE>AUTHZ</AZMAN_STORE_TYPE>
-    <AZMAN_CONNECTION_STRING>https://"{{ win_vra_vcacapvm }}"."{{ win_vra_dns_sufix }}"/</AZMAN_CONNECTION_STRING>
+    <AZMAN_CONNECTION_STRING>https://{{ win_vra_vcacapvm }}.{{ win_vra_dns_sufix }}/</AZMAN_CONNECTION_STRING>
   </webServiceCommon>
   <database>
     <DATABASE_DATA_PATH></DATABASE_DATA_PATH>
@@ -37,7 +37,7 @@
     <CREATE_MSSQL_AZMAN_STORE_FLAG>false</CREATE_MSSQL_AZMAN_STORE_FLAG>
   </database>
   <managerService>
-    <MANAGER_SERVICE_HOSTNAME>"{{ win_vra_vcaciaasvm }}"</MANAGER_SERVICE_HOSTNAME>
+    <MANAGER_SERVICE_HOSTNAME>{{ win_vra_vcaciaasvm }}</MANAGER_SERVICE_HOSTNAME>
     <MANAGER_SERVICE_LOG_PATH>C:\Program Files (x86)\VMware\vCAC\\Server\Logs</MANAGER_SERVICE_LOG_PATH>
     <MANAGER_SERVICE_SERVICESTART_FLAG>True</MANAGER_SERVICE_SERVICESTART_FLAG>
     <MANAGER_SERVICE_SERVICESTANDBY_FLAG>False</MANAGER_SERVICE_SERVICESTANDBY_FLAG>
@@ -46,12 +46,12 @@
     <MODEL_MANAGER_WEB_LOG_PATH>C:\Program Files (x86)\VMware\vCAC\\Server\Model Manager Web\Logs</MODEL_MANAGER_WEB_LOG_PATH>
   </modelManagerWeb>
   <modelManagerData>
-    <MODEL_MANAGER_WEB_HOSTNAME>"{{ win_vra_vcaciaasvm }}"</MODEL_MANAGER_WEB_HOSTNAME>
+    <MODEL_MANAGER_WEB_HOSTNAME>{{ win_vra_vcaciaasvm }}</MODEL_MANAGER_WEB_HOSTNAME>
     <HTTPS_PORT>443</HTTPS_PORT>
     <AZMAN_STORE_TYPE>AUTHZ</AZMAN_STORE_TYPE>
-    <AZMAN_CONNECTION_STRING>https://"{{ win_vra_vcacapvm }}"."{{ win_vra_dns_sufix }}"/</AZMAN_CONNECTION_STRING>
+    <AZMAN_CONNECTION_STRING>https://{{ win_vra_vcacapvm }}.{{ win_vra_dns_sufix }}/</AZMAN_CONNECTION_STRING>
     <SMTP_ENABLE_SSL_FLAG>False</SMTP_ENABLE_SSL_FLAG>
-    <SMTP_WEBSITE_CONSOLE_HOSTNAME>"{{ win_vra_vcaciaasvm }}"</SMTP_WEBSITE_CONSOLE_HOSTNAME>
+    <SMTP_WEBSITE_CONSOLE_HOSTNAME>{{ win_vra_vcaciaasvm }}</SMTP_WEBSITE_CONSOLE_HOSTNAME>
     <SMTP_SERVER></SMTP_SERVER>
     <SMTP_FROM_ADDRESS></SMTP_FROM_ADDRESS>
     <SMTP_ANONYMOUS_AUTHEN_FLAG>True</SMTP_ANONYMOUS_AUTHEN_FLAG>
