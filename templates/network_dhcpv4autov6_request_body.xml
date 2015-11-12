@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CIM CIMVERSION="2.0" DTDVERSION="2.0">
+    <MESSAGE ID="48" PROTOCOLVERSION="1.0">
+        <SIMPLEREQ>
+            <METHODCALL NAME="SetV4AndV6NetworkSetting">
+                <LOCALINSTANCEPATH>
+                    <LOCALNAMESPACEPATH>
+                        <NAMESPACE NAME="root"/>
+                        <NAMESPACE NAME="cimv2"/>
+                    </LOCALNAMESPACEPATH>
+                    <INSTANCENAME CLASSNAME="VAMI_NetworkSetting">
+                        <KEYBINDING NAME="Name">
+                            <KEYVALUE VALUETYPE="string">eth0</KEYVALUE>
+                        </KEYBINDING>
+                        <KEYBINDING NAME="ServerName">
+                            <KEYVALUE VALUETYPE="string">{{vra_host_name}}</KEYVALUE>
+                        </KEYBINDING>
+                    </INSTANCENAME>
+                </LOCALINSTANCEPATH>
+                <PARAMVALUE NAME="AddressVersions" PARAMTYPE="string">
+                    <VALUE>{{vra_address_version}}</VALUE>
+                </PARAMVALUE>
+            </METHODCALL>
+        </SIMPLEREQ>
+    </MESSAGE>
+</CIM>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CIM CIMVERSION="2.0" DTDVERSION="2.0">
+    <MESSAGE ID="15" PROTOCOLVERSION="1.0">
+        <SIMPLEREQ>
+            <METHODCALL NAME="SetProxySetting">
+                <LOCALINSTANCEPATH>
+                    <LOCALNAMESPACEPATH>
+                        <NAMESPACE NAME="root"/>
+                        <NAMESPACE NAME="cimv2"/>
+                    </LOCALNAMESPACEPATH>
+                    <INSTANCENAME CLASSNAME="VAMI_ProxySetting">
+                        <KEYBINDING NAME="ServerName">
+                            <KEYVALUE VALUETYPE="string">{{vra_host_name}}l</KEYVALUE>
+                        </KEYBINDING>
+                    </INSTANCENAME>
+                </LOCALINSTANCEPATH>
+                <PARAMVALUE NAME="ProxyServer" PARAMTYPE="string">
+                    <VALUE>{{vra_http_proxy_server}}</VALUE>
+                </PARAMVALUE>
+                <PARAMVALUE NAME="ProxyPortNumber" PARAMTYPE="string">
+                    <VALUE>{{vra_http_proxy_port}}0</VALUE>
+                </PARAMVALUE>
+                <PARAMVALUE NAME="Username" PARAMTYPE="string">
+                    <VALUE>{{vra_http_proxy_user}}</VALUE>
+                </PARAMVALUE>
+                <PARAMVALUE NAME="Password" PARAMTYPE="string">
+                    <VALUE>{{vra_http_proxy_password}}</VALUE>
+                </PARAMVALUE>
+            </METHODCALL>
+        </SIMPLEREQ>
+    </MESSAGE>
+</CIM>

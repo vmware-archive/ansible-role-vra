@@ -20,6 +20,12 @@ ovftool: /usr/local/bin/ovftool/ovftool
 vra_ova: "vra.ova"
 vra_ova_location: "/var/www/html/downloads"
 
+tenant_request_body_file: "/tmp/tenant-request-body-file"
+token_request_body_file: "/tmp/token-request-body-file"
+dns_request_body_file: "/tmp/dns-request-body-file"
+server_request_body_file: "/tmp/server-request-body-file"
+network_request_body_file: /tmp/network-request-body.xml
+http_proxy_request_body_file: /tmp/http-proxy-body.xml
 
 vra_poweron : yes
 vcenter_host: vc-01a.corp.local

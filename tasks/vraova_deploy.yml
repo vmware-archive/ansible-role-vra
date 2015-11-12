@@ -73,7 +73,7 @@
       va-ssh-enabled: "{{vra_ssh_enabled}}"
       vami.hostname: "{{vra_host_name}}"
       vami.gateway.VMware_vRealize_Appliance: "{{vra_gateway}}"
-      vami.dns.VMware_vRealize_Appliance:  "{{vra_dns}}"
+      vami.dns.VMware_vRealize_Appliance:  "{{vra_dns_server1}}"
       vami.ip0.VMware_vRealize_Appliance:  "{{vra_ip}}"
       vami.netmask0.VMware_vRealize_Appliance: "{{vra_netmask}}"
     option_props:

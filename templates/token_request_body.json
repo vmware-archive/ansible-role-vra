@@ -1,0 +1,2 @@
+ {"username" : "{{vra_tenant_user}}","password" : "{{vra_tenant_password}}","tenant":"{{vra_tenant_url}}"}
+

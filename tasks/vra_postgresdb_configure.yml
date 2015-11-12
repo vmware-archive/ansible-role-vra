@@ -17,7 +17,7 @@
 - name: Configure Postgres DB
   ignore_errors: yes
   vra_configure:
-    vra_instance: "{{vra_instance}}"
+    vra_instance: "{{vra_host_name}}"
     vra_user: "{{vra_user}}"
     vra_port: "{{vra_port}}"
     vra_root_password: "{{vra_root_password}}"

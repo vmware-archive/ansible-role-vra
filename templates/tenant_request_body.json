@@ -1,0 +1,2 @@
+{ "@type" : "Tenant",  "id" : {{vra_tenant_id}}, "urlName" : {{vra_tenant_url}},  "description" : {{vra_tenant_description}},  "contactEmail" : {{vra_tenant_email}},  "defaultTenant" :{{vra_default_tenant}} }
+

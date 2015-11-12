@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CIM CIMVERSION="2.0" DTDVERSION="2.0">
+    <MESSAGE ID="25" PROTOCOLVERSION="1.0">
+        <SIMPLEREQ>
+            <METHODCALL NAME="SetServerName">
+                <LOCALCLASSPATH>
+                    <LOCALNAMESPACEPATH>
+                        <NAMESPACE NAME="root"/>
+                        <NAMESPACE NAME="cimv2"/>
+                    </LOCALNAMESPACEPATH>
+                    <CLASSNAME NAME="VAMI_NetworkSetting"/>
+                </LOCALCLASSPATH>
+                <PARAMVALUE NAME="HostName" PARAMTYPE="string">
+                    <VALUE>{{vra_host_name}}</VALUE>
+                </PARAMVALUE>
+            </METHODCALL>
+        </SIMPLEREQ>
+    </MESSAGE>
+</CIM>

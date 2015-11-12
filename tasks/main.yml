@@ -16,31 +16,40 @@
 ---
 - name: deploy VRA OVA
   include: vraova_deploy.yml tags=vra_deploy
-  when: inventory_hostname == 'localhost'
+  when: vra_config_type == 'Default' 
 - name: Power VRA
   include: vra_poweron.yml tags=vra_poweron
-  when: inventory_hostname == 'localhost'
+  when: vra_config_type == 'Default'
 - name: Delete VRA
   include: vra_delete.yml tags=vra_delete
-  when: inventory_hostname == 'localhost'
+  when: vra_config_type == 'Default'
+- name: Configure Network
+  include: vra_network.yml tags=vra_network
+  when: vra_config_type == 'Default'
+- name: Configure Http Proxy
+  include: vra_http_proxy.yml tags=vra_http_proxy
+  when: vra_config_type == 'Default'
 - name:  Configure VRA Settings
   include: vra_appliance_configure.yml tags=vra_configure_settings
-  when: inventory_hostname == 'localhost'
+  when: vra_config_type == 'Default'
 - name:  Configure VRA SSO
   include: vra_sso_configure.yml tags=vra_configure_sso
-  when: inventory_hostname == 'localhost'
+  when: vra_config_type == 'Default'
 - name:  Configure Postgres
   include: vra_postgresdb_configure.yml tags=vra_configure_postgresdb
-  when: inventory_hostname == 'localhost'
+  when: vra_config_type == 'Default'
 - name:  Configure Messaging
   include: vra_messaging_configure.yml tags=vra_configure_messaging
-  when: inventory_hostname == 'localhost'
+  when: vra_config_type == 'Default'
+- name:  Configure Tenant
+  include: vra_tenant_configure.yml tags=vra_configure_tenant
+  when: vra_config_type == 'Default'
 - name:  Configure Clustering
   include: vra_cluster_configure.yml tags=vra_configure_cluster
-  when: inventory_hostname == 'localhost'
+  when: vra_config_type == 'Default'
 - name: Configure vRA Windows
   include: vra_win_script.yml tags=vra_win_script
-  when: inventory_hostname == '192.168.110.81'
+  when: vra_config_type == 'Default'
 - name: Install vRA Windows
   include: vra_win_deploy.yml tags=vra_win_deploy
-  when: inventory_hostname == '192.168.110.83'
+  when: vra_config_type == 'Windows'

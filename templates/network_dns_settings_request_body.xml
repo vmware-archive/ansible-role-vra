@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CIM CIMVERSION="2.0" DTDVERSION="2.0">
+    <MESSAGE ID="24" PROTOCOLVERSION="1.0">
+        <SIMPLEREQ>
+            <METHODCALL NAME="SetDNSSetting">
+                <LOCALINSTANCEPATH>
+                    <LOCALNAMESPACEPATH>
+                        <NAMESPACE NAME="root"/>
+                        <NAMESPACE NAME="cimv2"/>
+                    </LOCALNAMESPACEPATH>
+                    <INSTANCENAME CLASSNAME="VAMI_DNSSetting">
+                        <KEYBINDING NAME="ServerName">
+                            <KEYVALUE VALUETYPE="string">{{vra_host_name}}</KEYVALUE>
+                        </KEYBINDING>
+                    </INSTANCENAME>
+                </LOCALINSTANCEPATH>
+                <PARAMVALUE NAME="NameServer1" PARAMTYPE="string">
+                    <VALUE>{{vra_dns_server1}}</VALUE>
+                </PARAMVALUE>
+                <PARAMVALUE NAME="NameServer2" PARAMTYPE="string">
+                    <VALUE>{{vra_dns_server2}}</VALUE>
+                </PARAMVALUE>
+                <PARAMVALUE NAME="Domain" PARAMTYPE="string">
+                    <VALUE>{{vra_domain}}</VALUE>
+                </PARAMVALUE>
+                <PARAMVALUE NAME="SearchPath" PARAMTYPE="string">
+                    <VALUE>{{vra_search_path}}</VALUE>
+                </PARAMVALUE>
+            </METHODCALL>
+        </SIMPLEREQ>
+    </MESSAGE>
+</CIM>

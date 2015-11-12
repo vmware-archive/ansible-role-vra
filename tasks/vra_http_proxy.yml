@@ -1,0 +1,45 @@
+#
+#  Copyright 2015 VMware, Inc.
+#
+#  Licensed under the Apache License, Version 2.0 (the "License");
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+#
+
+- name: create http proxy template
+  template:
+    src: http_proxy_request_body.xml
+    dest: "{{http_proxy_request_body_file }}"
+
+- name: Notice -- Waiting on vRBusiness API availability.
+  wait_for: host="{{ vra_host_name }}" port=5480 delay=30 timeout=3600
+
+# TODO: this really is a 'timed delay' and should actually check the DB port.
+- name: Notice -- Waiting briefly for databases to settle.
+  wait_for: host="{{vra_host_name}}" port=5480 delay=30 timeout=600
+
+
+- name: Register with vra and send the http proxy  changes
+  uri:
+    url: https://{{ vra_host_name }}:5480/cimom
+    method: POST
+    force_basic_auth: yes
+    follow_redirects: all
+    user: "{{ vra_user }}"
+    password: "{{ vra_root_password }}"
+    HEADER_Content-Type: "application/xml"
+    body:  "{{ lookup('file',http_proxy_request_body_file) }}"
+    validate_certs: no
+    timeout: 120
+    status_code: 200
+  register: register_result
+
+- debug: msg="{{ register_result }}"
