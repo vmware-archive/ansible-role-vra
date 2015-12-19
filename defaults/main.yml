@@ -64,7 +64,7 @@ vra_sso_user: "administrator@vsphere.local"
 vra_sso_password: "VMware1!"
 
 ## vra license key settings
-vra_license_key: "W10CA-00351-L8R8R-017RM-CEX6Y"
+vra_license_key: ""
 
 ## vra ntp setting
 vra_ntp_server: "192.168.110.10"

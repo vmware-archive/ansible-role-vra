@@ -1,25 +1,26 @@
-# ansible-role-elasticsearch
+# ansible-role-vra
 
-Ansible playbook to automate installing and maintaining VMware VRA.
+Ansible playbook to automate installing and maintaining VMware vRA.
 
 ## Requirements
-Able to deploy VRA Appliance usng ovf tool and vcenter. Currently VRA Appliance is deployed into ESX cluster using vcenter parameters. Do we aslo need to support deployment of the VRA appliance into the host directly? 
-Able to configure VRA settings  found in VAMi console  of vra appliance using REST Api and XML. Single deployment settings are Host, SSL, SSO and licensing. Distributed deployment settings are postgres Db, messaging and cluster
+
+A vCenter server into which to deploy vRA is a fundamental requirement of this role.
+The role also assumes ovftool is on the path and available to the ansible play.
+
+Currently VRA Appliance is deployed into ESX cluster using vCenter parameters
+provided in this role. In reality, one could try to install vRA into a ESXi host
+directly, but that would largely be a bad idea, if not well away from best
+practices.
+
+The installation configures vRA pursuant to parameters available via the VAMi console
+of the vRA appliance. This is always via REST API and XML. Single deployment settings
+are Host, SSL, SSO and licensing. Distributed deployment settings are postgres Db,
+messaging and cluster settings.
+
 ## Role Variables
 
-... forthcoming
+TODO: update (there are many).
 
-## playbook invoking the role
-ansible/playbooks/supersddc/site_vra.yml
-## tasks
-vra_ovadeploy.yml - used for deploying an appliance
-vra_poweron.yml - used for powering on the appliance. ova deploy has an option of creating the appliance without powering on
-vra_delete.yml - used for deleting an appliance. Mostly used for development purposes. can be removed in the production.
-vra_postgresdb_configure.yml - used for configuring the postgres db
-vra_messaging_configure.yml - used for configuring the messaging of vra
-vra_cluster_configure.yml - used for configuring the clusters for vra( Not being invoked currently from the front end as it is not working as expected)
-vra_configure.yml(??) - used for configuring the host name, SSL, SSO and licensing properties of vra. Will be added by Vamsi. A hook has been provided in the front end. 
-Currently all these tasks are invoked from the front end  through tasks/main.yml based on ohe tags specified in the base.yml.j2 of supersddc gui 
 # License and Copyright
  
 Copyright 2015 VMware, Inc.
