@@ -14,8 +14,10 @@
 #  limitations under the License.
 #
 ---
-
-##### this is where the UI installs the ovftool this by default
+# ------------------------------------------------ #
+# This section contains vRA Installation variables #
+# ------------------------------------------------ #
+vra_config_type: Default
 ovftool: /usr/local/bin/ovftool/ovftool
 vra_ova: "vra.ova"
 vra_ova_location: "/var/www/html/downloads"
@@ -38,8 +40,7 @@ vra_datastore: "ds-site-a-nfs-01"
 vra_mgmt_grp: VIO Management
 vra_network: "VIO Management"
 
-
-####These should come from UI###
+## Define how vRA should be named, placed. ##
 vra_name: vra7
 vra_host_name: vra-07a.corp.local
 vra_instance: "vra-07a.corp.local"
@@ -47,7 +48,6 @@ vra_user: "root"
 vra_root_password: VMware1!
 vra_port: '5480'
 vra_ssh_enabled: 'True'
-
 
 ## vra_delete is to indicate that we should delete the appliance if it exists (while deploying)
 vra_delete: '1'
@@ -79,3 +79,8 @@ vra_postgres_password: "vcac"
 #Directory where temporary vRA windows script will be generated
 script_dir: '/tmp/vra'
 
+# vCenter settings
+mgmt_vc: vcsa-01
+mgmt_vc_username: "administrator@vsphere.local"
+mgmt_vc_password: "VMware1!"
+mgmt_vc_port: 443

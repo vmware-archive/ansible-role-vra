@@ -1,0 +1,55 @@
+#
+#  Copyright 2015 VMware, Inc.
+#
+#  Licensed under the Apache License, Version 2.0 (the "License");
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+#
+---
+- name: deploy VRA OVA
+  include: vraova_deploy.yml tags=vra_deploy
+  when: vra_config_type == 'Default'
+- name: Power VRA
+  include: vra_poweron.yml tags=vra_poweron
+  when: vra_config_type == 'Default'
+- name: Delete VRA
+  include: vra_delete.yml tags=vra_delete
+  when: vra_config_type == 'Default'
+- name: Configure Network
+  include: vra_network.yml tags=vra_network
+  when: vra_config_type == 'Default'
+- name: Configure Http Proxy
+  include: vra_http_proxy.yml tags=vra_http_proxy
+  when: vra_config_type == 'Default'
+- name:  Configure VRA Settings
+  include: vra_appliance_configure.yml tags=vra_configure_settings
+  when: vra_config_type == 'Default'
+- name:  Configure VRA SSO
+  include: vra_sso_configure.yml tags=vra_configure_sso
+  when: vra_config_type == 'Default'
+- name:  Configure Postgres
+  include: vra_postgresdb_configure.yml tags=vra_configure_postgresdb
+  when: vra_config_type == 'Default'
+- name:  Configure Messaging
+  include: vra_messaging_configure.yml tags=vra_configure_messaging
+  when: vra_config_type == 'Default'
+- name:  Configure Tenant
+  include: vra_tenant_configure.yml tags=vra_configure_tenant
+  when: vra_config_type == 'Default'
+- name:  Configure Clustering
+  include: vra_cluster_configure.yml tags=vra_configure_cluster
+  when: vra_config_type == 'Default'
+- name: Configure vRA Windows
+  include: vra_win_script.yml tags=vra_win_script
+  when: vra_config_type == 'Default'
+- name: Install vRA Windows
+  include: vra_win_deploy.yml tags=vra_win_deploy
+  when: vra_config_type == 'Windows'

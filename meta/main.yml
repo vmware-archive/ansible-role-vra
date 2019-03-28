@@ -1,0 +1,24 @@
+# Copyright © 2018 VMware, Inc. All Rights Reserved.
+# SPDX-License-Identifier: Apache-2.0
+---
+galaxy_info:
+  role_name: ansible-role-vra
+  author: John Gardner
+  description: Manage VMware vRealize Automation
+  company: VMware
+  license: Apache2.0
+  min_ansible_version: 2.4
+
+  platforms:
+    - name: Ubuntu
+      versions:
+        - xenial
+        - artful
+
+  galaxy_tags:
+    - vra
+    - vrealize
+    - automation
+    - vmware
+
+dependencies:
